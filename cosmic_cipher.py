@@ -4,6 +4,8 @@ import secrets
 import quantumrandom as qr
 import numpy as np
 from typing import Tuple, Dict, Union
+from quantum_field_generator import QuantumFieldGenerator
+from dark_entropy_collector import DarkEntropyCollector
 
 def generate_cosmic_seed(bytes: int = 16, fallback: bool = True) -> Tuple[int, bool]:
     """Generate quantum random seed with fallback to PRNG."""
@@ -19,7 +21,10 @@ def generate_cosmic_seed(bytes: int = 16, fallback: bool = True) -> Tuple[int, b
         quantum_used = False
         random_bytes = secrets.token_bytes(bytes)
     
-    return int.from_bytes(random_bytes, 'big'), quantum_used
+    dark_collector = DarkEntropyCollector()
+    entropy = dark_collector.collect_dark_entropy(bytes * 8)
+    seed = int(hashlib.sha3_256(entropy.tobytes()).hexdigest(), 16)
+    return seed % (2**(8*bytes)), quantum_used
 
 def text_to_binary(text: str) -> str:
     """Convert text to binary using UTF-8."""
@@ -32,10 +37,17 @@ def binary_to_text(binary: str) -> str:
     byte_list = [int(binary[i:i+8], 2) for i in range(0, len(binary), 8)]
     return bytes(byte_list).decode('utf-8')
 
-def chaotic_to_keystream(sequence: np.ndarray, bits_per_value: int = 8) -> str:
+def chaotic_to_keystream(sequence: np.ndarray, bits_per_value: int = 8, use_quantum_field: bool = False) -> str:
     """Convert chaotic sequence to binary keystream."""
     if not 1 <= bits_per_value <= 32:
         raise ValueError("bits_per_value must be between 1 and 32")
+    
+    if use_quantum_field:
+        qfg = QuantumFieldGenerator()
+        sequence = qfg.generate_quantum_potential(sequence)
+        fluctuations = qfg.generate_vacuum_fluctuations(len(sequence))
+        sequence += fluctuations
+        sequence = sequence / np.max(np.abs(sequence))
     
     keystream = []
     scale = 2**bits_per_value

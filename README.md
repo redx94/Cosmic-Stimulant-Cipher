@@ -1,13 +1,14 @@
 # Cosmic Stimulant Cipher
 
-A cryptographic system inspired by cosmic phenomena, combining quantum randomness and chaotic dynamics.
+A quantum-inspired encryption system that leverages principles from quantum field theory and cosmology to create a robust and future-proof cipher.
 
 ## Features
 
-- Quantum random seed generation with PRNG fallback
-- Chaotic sequence generation using the Hénon map
-- UTF-8 support for text encryption
-- XOR-based encryption with keystream
+- **Quantum Field Generation**: Simulates vacuum fluctuations and quantum potentials
+- **Dark Entropy Collection**: Utilizes cosmic expansion and dark matter effects
+- **Advanced Visualization**: View attractors, quantum entropy, and Casimir effects
+- **DNA-based Key Expansion**: Biological-inspired key strengthening
+- **Quantum Simulation**: Entanglement and decoherence effects
 
 ## Security Features
 
@@ -61,6 +62,59 @@ ciphertext = encrypt(message, keystream)
 # Decrypt message
 decrypted = decrypt(ciphertext, keystream)
 ```
+
+## Enhanced GUI Usage
+
+The application now includes a full-featured graphical interface:
+
+1. Launch the GUI:
+```bash
+python cosmic_gui.py
+```
+
+2. Key Management:
+   - Generate a quantum random key automatically
+   - Input custom hexadecimal keys
+   - Copy keys to clipboard
+
+3. Features:
+   - File import/export support
+   - Visualization of chaotic attractor
+   - Real-time status updates
+   - Error handling and validation
+
+4. Requirements:
+   - Install additional dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Enhanced GUI Features
+
+The graphical interface now includes:
+
+1. Advanced Key Management:
+   - Quantum random key generation
+   - Key validation and format checking
+   - One-click key copying
+
+2. Visualization Tools:
+   - Interactive Hénon map attractor display
+   - Real-time visualization updates
+   - Chaotic pattern analysis
+
+3. Improved User Experience:
+   - Clear error messages and validation
+   - Status updates for all operations
+   - Comprehensive usage guide
+   - File import/export capabilities
+
+4. Security Features:
+   - Key format validation
+   - Secure key generation
+   - Clear-all functionality for sensitive data
+
+For detailed usage instructions, see the Help menu in the application.
 
 ## Security Notice
 
